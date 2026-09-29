@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Purr</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+:root{--bg:#f5f1ea;--ink:#171717;--muted:#77736c;--card:#fffdf9;--line:#ded8ce;--accent:#d97752}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid var(--line)}
+.logo{font-weight:700;font-size:24px;letter-spacing:-1.5px}.logo span{color:var(--accent)}
+nav .links{display:flex;gap:32px;font-size:14px}nav a{color:inherit;text-decoration:none}
+.btn{border:0;background:var(--ink);color:white;border-radius:999px;padding:13px 20px;font-weight:600;cursor:pointer}
+.hero{max-width:1200px;margin:0 auto;padding:72px 5vw 85px;display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-size:12px;font-weight:700}
+h1{font-family:"Playfair Display",serif;font-size:clamp(54px,7vw,92px);line-height:.92;letter-spacing:-4px;margin:18px 0 25px;max-width:650px}
+h1 em{color:var(--accent);font-style:normal}.hero p{color:var(--muted);font-size:18px;line-height:1.6;max-width:480px}
+.actions{display:flex;gap:12px;margin-top:30px}.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.hero-img{height:540px;border-radius:30px;overflow:hidden;position:relative;background:#ddd}
+.hero-img img{width:100%;height:100%;object-fit:cover}.badge{position:absolute;right:22px;top:22px;background:#fffdf9dd;backdrop-filter:blur(10px);padding:13px 17px;border-radius:18px;font-size:13px}
+.section{max-width:1200px;margin:0 auto;padding:30px 5vw 90px}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}
+h2{font-family:"Playfair Display",serif;font-size:42px;letter-spacing:-1.5px;margin:0}.section-head a{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.cat{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.25s}.cat:hover{transform:translateY(-5px);box-shadow:0 16px 35px #0000000d}
+.cat-img{height:260px;position:relative}.cat-img img{width:100%;height:100%;object-fit:cover}.heart{position:absolute;right:12px;top:12px;border:0;width:38px;height:38px;border-radius:50%;background:#fffdf9dd;font-size:18px;cursor:pointer}
+.cat-info{padding:18px}.cat-info h3{margin:0 0 6px;font-size:20px}.meta{font-size:13px;color:var(--muted)}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}.tag{background:#f0ece4;border-radius:99px;padding:6px 9px;font-size:11px}
+.story{max-width:1200px;margin:0 auto 100px;padding:0 5vw}.story-box{background:var(--ink);color:white;border-radius:30px;padding:65px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.story h2{font-size:52px}.story p{color:#b9b6b0;line-height:1.7;font-size:16px}.stat{border-top:1px solid #444;padding-top:22px;margin-top:28px;display:flex;gap:45px}.stat strong{display:block;font-size:30px}.stat span{color:#aaa;font-size:12px}
+footer{padding:35px 5vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+.modal{position:fixed;inset:0;background:#0008;display:none;place-items:center;padding:20px;z-index:5}.modal.open{display:grid}.modal-card{background:var(--card);max-width:470px;width:100%;padding:32px;border-radius:25px;position:relative}.close{position:absolute;right:20px;top:18px;border:0;background:none;font-size:25px;cursor:pointer}.modal-card h2{font-size:34px;margin-bottom:8px}.modal-card p{color:var(--muted);line-height:1.6}.modal-card input,.modal-card textarea{width:100%;margin:8px 0;padding:13px;border:1px solid var(--line);border-radius:12px;background:white;font:inherit}.modal-card textarea{height:90px;resize:none}
+@media(max-width:850px){nav .links{display:none}.hero{grid-template-columns:1fr;padding-top:45px}.hero-img{height:390px}.grid{grid-template-columns:repeat(2,1fr)}.story-box{grid-template-columns:1fr;padding:38px}.story h2{font-size:40px}}
+@media(max-width:520px){h1{font-size:57px;letter-spacing:-3px}.grid{grid-template-columns:1fr}.cat-img{height:300px}.actions .btn{flex:1}.section-head{align-items:start;gap:10px}.section-head a{margin-top:10px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">purr<span>·</span></div>
+  <div class="links"><a href="#cats">cats</a><a href="#why">why adopt</a><a href="#about">about</a></div>
+  <button class="btn" onclick="openModal()">adopt a cat →</button>
+</nav>
+
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow">rescue. love. home.</div>
+    <h1>find your <em>purrfect</em> match.</h1>
+    <p>Somewhere out there is a cat waiting for exactly what you have to give: a safe home, a warm lap, and someone to annoy at 3am.</p>
+    <div class="actions"><a class="btn" href="#cats">meet the cats →</a><a class="btn secondary" href="#why">how it works</a></div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1200&q=85" alt="cat relaxing">
+    <div class="badge">500+ cats waiting for a home</div>
+  </div>
+</section>
+
+<section class="section" id="cats">
+  <div class="section-head"><h2>cats looking for a home</h2><a href="#cats">view all →</a></div>
+  <div class="grid">
+    <article class="cat"><div class="cat-img"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=700&q=80" alt="Luna"><button class="heart" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button></div><div class="cat-info"><h3>Luna</h3><div class="meta">3 months · female</div><div class="tags"><span class="tag">playful</span><span class="tag">curious</span><span class="tag">sweet</span></div></div></article>
+    <article class="cat"><div class="cat-img"><img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=700&q=80" alt="Milo"><button class="heart" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button></div><div class="cat-info"><h3>Milo</h3><div class="meta">1 year · male</div><div class="tags"><span class="tag">calm</span><span class="tag">friendly</span><span class="tag">indoor</span></div></div></article>
+    <article class="cat"><div class="cat-img"><img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=700&q=80" alt="Shadow"><button class="heart" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button></div><div class="cat-info"><h3>Shadow</h3><div class="meta">2 years · male</div><div class="tags"><span class="tag">gentle</span><span class="tag">quiet</span><span class="tag">cuddly</span></div></div></article>
+    <article class="cat"><div class="cat-img"><img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=700&q=80" alt="Nami"><button class="heart" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button></div><div class="cat-info"><h3>Nami</h3><div class="meta">6 months · female</div><div class="tags"><span class="tag">playful</span><span class="tag">social</span><span class="tag">loving</span></div></div></article>
+  </div>
+</section>
+
+<section class="story" id="why">
+  <div class="story-box">
+    <div><div class="eyebrow">why adoption?</div><h2>a little love can change two lives.</h2></div>
+    <div><p>Every cat deserves a place to call home. Adoption gives rescued cats a second chance while making room for shelters to help another animal in need.</p><div class="stat"><div><strong>2.4k</strong><span>happy adoptions</span></div><div><strong>87</strong><span>rescue partners</span></div><div><strong>4.9/5</strong><span>adopter rating</span></div></div></div>
+  </div>
+</section>
+</main>
+
+<footer id="about"><span>purr· © 2026</span><span>made for cats & their humans</span></footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-card">
+    <button class="close" onclick="closeModal()">×</button>
+    <div class="eyebrow">start your journey</div><h2>tell us about you.</h2>
+    <p>We'll help find a cat whose personality fits your home.</p>
+    <input placeholder="your name"><input placeholder="email address"><textarea placeholder="tell us about your home..."></textarea>
+    <button class="btn" style="width:100%;margin-top:8px" onclick="submitForm()">find my match →</button>
+  </div>
+</div>
+<script>
+function openModal(){document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function submitForm(){alert("thanks — we'll be in touch about your purrfect match.");closeModal()}
+</script>
+</body>
+</html>
