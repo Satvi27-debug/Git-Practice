@@ -1,90 +1,908 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>purr — find your purrfect match</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DON'T CLICK ANYTHING</title>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
-:root{--bg:#f5f1ea;--ink:#171717;--muted:#77736c;--card:#fffdf9;--line:#ded8ce;--accent:#d97752}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif}
-nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid var(--line)}
-.logo{font-weight:700;font-size:24px;letter-spacing:-1.5px}.logo span{color:var(--accent)}
-nav .links{display:flex;gap:32px;font-size:14px}nav a{color:inherit;text-decoration:none}
-.btn{border:0;background:var(--ink);color:white;border-radius:999px;padding:13px 20px;font-weight:600;cursor:pointer}
-.hero{max-width:1200px;margin:0 auto;padding:72px 5vw 85px;display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:center}
-.eyebrow{text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-size:12px;font-weight:700}
-h1{font-family:"Playfair Display",serif;font-size:clamp(54px,7vw,92px);line-height:.92;letter-spacing:-4px;margin:18px 0 25px;max-width:650px}
-h1 em{color:var(--accent);font-style:normal}.hero p{color:var(--muted);font-size:18px;line-height:1.6;max-width:480px}
-.actions{display:flex;gap:12px;margin-top:30px}.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.hero-img{height:540px;border-radius:30px;overflow:hidden;position:relative;background:#ddd}
-.hero-img img{width:100%;height:100%;object-fit:cover}.badge{position:absolute;right:22px;top:22px;background:#fffdf9dd;backdrop-filter:blur(10px);padding:13px 17px;border-radius:18px;font-size:13px}
-.section{max-width:1200px;margin:0 auto;padding:30px 5vw 90px}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}
-h2{font-family:"Playfair Display",serif;font-size:42px;letter-spacing:-1.5px;margin:0}.section-head a{color:var(--muted);font-size:14px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.cat{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.25s}.cat:hover{transform:translateY(-5px);box-shadow:0 16px 35px #0000000d}
-.cat-img{height:260px;position:relative}.cat-img img{width:100%;height:100%;object-fit:cover}.heart{position:absolute;right:12px;top:12px;border:0;width:38px;height:38px;border-radius:50%;background:#fffdf9dd;font-size:18px;cursor:pointer}
-.cat-info{padding:18px}.cat-info h3{margin:0 0 6px;font-size:20px}.meta{font-size:13px;color:var(--muted)}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}.tag{background:#f0ece4;border-radius:99px;padding:6px 9px;font-size:11px}
-.story{max-width:1200px;margin:0 auto 100px;padding:0 5vw}.story-box{background:var(--ink);color:white;border-radius:30px;padding:65px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.story h2{font-size:52px}.story p{color:#b9b6b0;line-height:1.7;font-size:16px}.stat{border-top:1px solid #444;padding-top:22px;margin-top:28px;display:flex;gap:45px}.stat strong{display:block;font-size:30px}.stat span{color:#aaa;font-size:12px}
-footer{padding:35px 5vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
-.modal{position:fixed;inset:0;background:#0008;display:none;place-items:center;padding:20px;z-index:5}.modal.open{display:grid}.modal-card{background:var(--card);max-width:470px;width:100%;padding:32px;border-radius:25px;position:relative}.close{position:absolute;right:20px;top:18px;border:0;background:none;font-size:25px;cursor:pointer}.modal-card h2{font-size:34px;margin-bottom:8px}.modal-card p{color:var(--muted);line-height:1.6}.modal-card input,.modal-card textarea{width:100%;margin:8px 0;padding:13px;border:1px solid var(--line);border-radius:12px;background:white;font:inherit}.modal-card textarea{height:90px;resize:none}
-@media(max-width:850px){nav .links{display:none}.hero{grid-template-columns:1fr;padding-top:45px}.hero-img{height:390px}.grid{grid-template-columns:repeat(2,1fr)}.story-box{grid-template-columns:1fr;padding:38px}.story h2{font-size:40px}}
-@media(max-width:520px){h1{font-size:57px;letter-spacing:-3px}.grid{grid-template-columns:1fr}.cat-img{height:300px}.actions .btn{flex:1}.section-head{align-items:start;gap:10px}.section-head a{margin-top:10px}}
+* {
+    box-sizing: border-box;
+    cursor: crosshair;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050505;
+    color: white;
+}
+
+body {
+    transition: transform .15s, filter .4s;
+}
+
+/* =========================
+   BACKGROUND
+
+canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.noise {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: .07;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 2px,
+            white 3px
+        );
+    mix-blend-mode: overlay;
+}
+
+/* =========================
+   MAIN
+
+main {
+    position: relative;
+    z-index: 5;
+}
+
+/* =========================
+   HERO
+
+.hero {
+    height: 100vh;
+    min-height: 650px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-title {
+    position: relative;
+    font-size: clamp(80px, 17vw, 240px);
+    line-height: .7;
+    letter-spacing: -15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    user-select: none;
+    z-index: 10;
+    mix-blend-mode: difference;
+}
+
+.hero-title span {
+    display: block;
+}
+
+.hero-title span:nth-child(2) {
+    transform: translateX(8vw);
+}
+
+.hero-title span:nth-child(3) {
+    transform: translateX(-5vw);
+}
+
+.glitch {
+    animation: glitch 2.8s infinite;
+}
+
+@keyframes glitch {
+    0%, 88%, 100% {
+        transform: translate(0);
+    }
+
+    90% {
+        transform: translate(-8px, 4px);
+    }
+
+    92% {
+        transform: translate(8px, -4px);
+    }
+
+    94% {
+        transform: translate(-3px, 0);
+    }
+}
+
+.warning {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #aaa;
+}
+
+.coords {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    font-family: monospace;
+    font-size: 11px;
+    color: #aaa;
+}
+
+/* =========================
+   BUTTON
+
+.start {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+
+    padding: 16px 30px;
+
+    border: 1px solid white;
+    border-radius: 100px;
+
+    background: transparent;
+    color: white;
+
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    transition: .25s;
+}
+
+.start:hover {
+    background: white;
+    color: black;
+    transform: translateX(-50%) scale(1.12);
+}
+
+/* =========================
+   CHAOS SECTION
+
+.chaos {
+    min-height: 100vh;
+    padding: 100px 6vw;
+    position: relative;
+}
+
+.section-title {
+    font-size: clamp(50px, 10vw, 150px);
+    letter-spacing: -8px;
+    line-height: .8;
+    margin: 0;
+}
+
+.section-sub {
+    margin-top: 20px;
+    color: #888;
+    font-family: monospace;
+}
+
+/* =========================
+   FLOATING OBJECTS
+
+.objects {
+    position: relative;
+    height: 650px;
+    margin-top: 80px;
+}
+
+.object {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    user-select: none;
+
+    border: 1px solid white;
+
+    transition:
+        transform .3s,
+        border-radius .3s,
+        background .3s;
+}
+
+.object:hover {
+    background: white;
+    color: black;
+    border-radius: 50%;
+    transform: scale(1.2) rotate(20deg) !important;
+}
+
+.o1 {
+    width: 250px;
+    height: 250px;
+    left: 5%;
+    top: 5%;
+}
+
+.o2 {
+    width: 170px;
+    height: 170px;
+    right: 10%;
+    top: 10%;
+}
+
+.o3 {
+    width: 320px;
+    height: 120px;
+    left: 30%;
+    bottom: 10%;
+}
+
+.o4 {
+    width: 100px;
+    height: 100px;
+    right: 30%;
+    top: 40%;
+    border-radius: 50%;
+}
+
+.o5 {
+    width: 200px;
+    height: 200px;
+    left: 42%;
+    top: 12%;
+    border-radius: 50%;
+}
+
+/* =========================
+   BIG INTERACTION
+
+.interaction {
+    min-height: 100vh;
+    padding: 100px 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.interaction-box {
+    height: 65vh;
+    min-height: 500px;
+    border: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at var(--x, 50%) var(--y, 50%),
+            #ffffff 0,
+            #222 7%,
+            #050505 30%
+        );
+}
+
+.interaction-text {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.interaction-text h2 {
+    font-size: clamp(45px, 9vw, 130px);
+    line-height: .8;
+    letter-spacing: -7px;
+    margin: 0;
+    mix-blend-mode: difference;
+}
+
+/* =========================
+   ORBIT
+
+.orbit {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border: 1px solid #777;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 10s linear infinite;
+}
+
+.orbit.two {
+    width: 500px;
+    height: 500px;
+    animation-duration: 17s;
+    animation-direction: reverse;
+}
+
+.orbit-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    top: -8px;
+    left: 50%;
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* =========================
+   RANDOM MACHINE
+
+.machine {
+    min-height: 100vh;
+    padding: 100px 6vw;
+}
+
+.machine-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 70px;
+}
+
+.machine-card {
+    min-height: 300px;
+    border: 1px solid #333;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.machine-card h3 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.machine-card p {
+    color: #777;
+    font-family: monospace;
+}
+
+.machine-button {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+
+    padding: 12px 20px;
+
+    background: white;
+    color: black;
+
+    border: 0;
+    font-weight: bold;
+}
+
+.result {
+    font-size: clamp(35px, 6vw, 80px);
+    margin-top: 50px;
+    line-height: .9;
+    letter-spacing: -4px;
+}
+
+/* =========================
+   FINAL
+
+.final {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.final h2 {
+    font-size: clamp(70px, 18vw, 250px);
+    line-height: .7;
+    letter-spacing: -15px;
+    margin: 0;
+    transition: .2s;
+}
+
+.final button {
+    position: absolute;
+    bottom: 50px;
+
+    padding: 15px 25px;
+
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+
+    border-radius: 100px;
+}
+
+/* =========================
+   MOBILE
+
+@media(max-width: 700px) {
+
+    .hero-title {
+        letter-spacing: -7px;
+    }
+
+    .warning {
+        left: 15px;
+        top: 15px;
+    }
+
+    .coords {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .chaos,
+    .interaction,
+    .machine {
+        padding: 80px 20px;
+    }
+
+    .objects {
+        height: 550px;
+    }
+
+    .o1 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .o2 {
+        width: 120px;
+        height: 120px;
+    }
+
+    .o3 {
+        width: 200px;
+        height: 90px;
+        left: 20%;
+    }
+
+    .o5 {
+        width: 130px;
+        height: 130px;
+    }
+
+    .machine-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .interaction-box {
+        min-height: 450px;
+    }
+}
 </style>
 </head>
+
 <body>
-<nav>
-  <div class="logo">purr<span>·</span></div>
-  <div class="links"><a href="#cats">cats</a><a href="#why">why adopt</a><a href="#about">about</a></div>
-  <button class="btn" onclick="openModal()">adopt a cat →</button>
-</nav>
+
+<canvas id="canvas"></canvas>
+
+<div class="noise"></div>
 
 <main>
-<section class="hero">
-  <div>
-    <div class="eyebrow">rescue. love. home.</div>
-    <h1>find your <em>purrfect</em> match.</h1>
-    <p>Somewhere out there is a cat waiting for exactly what you have to give: a safe home, a warm lap, and someone to annoy at 3am.</p>
-    <div class="actions"><a class="btn" href="#cats">meet the cats →</a><a class="btn secondary" href="#why">how it works</a></div>
-  </div>
-  <div class="hero-img">
-    <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1200&q=85" alt="cat relaxing">
-    <div class="badge">500+ cats waiting for a home</div>
-  </div>
+
+<!-- HERO -->
+
+<section class="hero" id="top">
+
+    <div class="warning">
+        SYSTEM // UNSTABLE
+    </div>
+
+    <div class="hero-title glitch" id="heroTitle">
+        <span>WHAT</span>
+        <span>IS</span>
+        <span>THIS</span>
+    </div>
+
+    <div class="coords">
+        17.3850° N<br>
+        78.4867° E
+    </div>
+
+    <button class="start" onclick="startChaos()">
+        DO NOT CLICK
+    </button>
+
 </section>
 
-<section class="section" id="cats">
-  <div class="section-head"><h2>cats looking for a home</h2><a href="#cats">view all →</a></div>
-  <div class="grid">
-    <article class="cat"><div class="cat-img"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=700&q=80" alt="Luna"><button class="heart" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button></div><div class="cat-info"><h3>Luna</h3><div class="meta">3 months · female</div><div class="tags"><span class="tag">playful</span><span class="tag">curious</span><span class="tag">sweet</span></div></div></article>
-    <article class="cat"><div class="cat-img"><img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=700&q=80" alt="Milo"><button class="heart" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button></div><div class="cat-info"><h3>Milo</h3><div class="meta">1 year · male</div><div class="tags"><span class="tag">calm</span><span class="tag">friendly</span><span class="tag">indoor</span></div></div></article>
-    <article class="cat"><div class="cat-img"><img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=700&q=80" alt="Shadow"><button class="heart" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button></div><div class="cat-info"><h3>Shadow</h3><div class="meta">2 years · male</div><div class="tags"><span class="tag">gentle</span><span class="tag">quiet</span><span class="tag">cuddly</span></div></div></article>
-    <article class="cat"><div class="cat-img"><img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=700&q=80" alt="Nami"><button class="heart" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button></div><div class="cat-info"><h3>Nami</h3><div class="meta">6 months · female</div><div class="tags"><span class="tag">playful</span><span class="tag">social</span><span class="tag">loving</span></div></div></article>
-  </div>
+
+<!-- CHAOS -->
+
+<section class="chaos">
+
+    <h2 class="section-title">
+        NOTHING<br>
+        MAKES SENSE.
+    </h2>
+
+    <div class="section-sub">
+        // OBJECTS HAVE BEEN RELEASED
+    </div>
+
+    <div class="objects">
+
+        <div class="object o1">WHY?</div>
+
+        <div class="object o2">404</div>
+
+        <div class="object o3">THIS IS NOT A WEBSITE</div>
+
+        <div class="object o4">+</div>
+
+        <div class="object o5">∞</div>
+
+    </div>
+
 </section>
 
-<section class="story" id="why">
-  <div class="story-box">
-    <div><div class="eyebrow">why adoption?</div><h2>a little love can change two lives.</h2></div>
-    <div><p>Every cat deserves a place to call home. Adoption gives rescued cats a second chance while making room for shelters to help another animal in need.</p><div class="stat"><div><strong>2.4k</strong><span>happy adoptions</span></div><div><strong>87</strong><span>rescue partners</span></div><div><strong>4.9/5</strong><span>adopter rating</span></div></div></div>
-  </div>
+
+<!-- INTERACTION -->
+
+<section class="interaction">
+
+    <h2 class="section-title">
+        MOVE.
+    </h2>
+
+    <div class="interaction-box" id="interactionBox">
+
+        <div class="orbit">
+            <div class="orbit-dot"></div>
+        </div>
+
+        <div class="orbit two">
+            <div class="orbit-dot"></div>
+        </div>
+
+        <div class="interaction-text">
+            <h2>
+                YOUR<br>
+                CURSOR<br>
+                CONTROLS<br>
+                SPACE.
+            </h2>
+        </div>
+
+    </div>
+
 </section>
+
+
+<!-- MACHINE -->
+
+<section class="machine">
+
+    <h2 class="section-title">
+        RANDOM<br>
+        MACHINE.
+    </h2>
+
+    <div class="section-sub">
+        // ASK THE MACHINE SOMETHING USELESS
+    </div>
+
+    <div class="machine-grid">
+
+        <div class="machine-card">
+
+            <h3>MOOD</h3>
+
+            <p>
+                Generate the emotional state of this website.
+            </p>
+
+            <div class="result" id="mood">
+                ???
+            </div>
+
+            <button
+                class="machine-button"
+                onclick="generateMood()">
+                GENERATE
+            </button>
+
+        </div>
+
+
+        <div class="machine-card">
+
+            <h3>DESTINY</h3>
+
+            <p>
+                Find out what happens next.
+            </p>
+
+            <div class="result" id="destiny">
+                ???
+            </div>
+
+            <button
+                class="machine-button"
+                onclick="generateDestiny()">
+                REVEAL
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="final">
+
+    <h2 id="finalText">
+        ARE<br>
+        YOU<br>
+        DONE?
+    </h2>
+
+    <button onclick="destroyReality()">
+        ABSOLUTELY NOT
+    </button>
+
+</section>
+
 </main>
 
-<footer id="about"><span>purr· © 2026</span><span>made for cats & their humans</span></footer>
 
-<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-card">
-    <button class="close" onclick="closeModal()">×</button>
-    <div class="eyebrow">start your journey</div><h2>tell us about you.</h2>
-    <p>We'll help find a cat whose personality fits your home.</p>
-    <input placeholder="your name"><input placeholder="email address"><textarea placeholder="tell us about your home..."></textarea>
-    <button class="btn" style="width:100%;margin-top:8px" onclick="submitForm()">find my match →</button>
-  </div>
-</div>
 <script>
-function openModal(){document.getElementById('modal').classList.add('open')}
-function closeModal(){document.getElementById('modal').classList.remove('open')}
-function submitForm(){alert("thanks — we'll be in touch about your purrfect match.");closeModal()}
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resize();
+
+window.addEventListener("resize", resize);
+
+for (let i = 0; i < 130; i++) {
+
+    particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - .5) * .4,
+        vy: (Math.random() - .5) * .4,
+        size: Math.random() * 2 + .5
+    });
+
+}
+
+function animateParticles() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (const p of particles) {
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width)
+            p.vx *= -1;
+
+        if (p.y < 0 || p.y > canvas.height)
+            p.vy *= -1;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle = "rgba(255,255,255,.5)";
+        ctx.fill();
+
+    }
+
+    requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
+
+
+/* =====================================
+   CURSOR GRAVITY
+
+const interaction =
+    document.getElementById("interactionBox");
+
+interaction.addEventListener("mousemove", e => {
+
+    const rect = interaction.getBoundingClientRect();
+
+    const x =
+        ((e.clientX - rect.left) / rect.width) * 100;
+
+    const y =
+        ((e.clientY - rect.top) / rect.height) * 100;
+
+    interaction.style.setProperty("--x", x + "%");
+    interaction.style.setProperty("--y", y + "%");
+
+});
+
+
+function startChaos() {
+
+    document.body.style.filter =
+        "invert(1)";
+
+    setTimeout(() => {
+
+        document.body.style.filter =
+            "none";
+
+    }, 350);
+
+    document.getElementById("heroTitle")
+        .innerHTML =
+        "<span>YOU</span><span>SHOULD</span><span>NOT</span>";
+
+}
+
+
+const moods = [
+    "UNHINGED",
+    "CONFUSED",
+    "CHAOTIC",
+    "SUSPICIOUS",
+    "COSMIC",
+    "TIRED",
+    "POWERFUL",
+    "WHY"
+];
+
+function generateMood() {
+
+    const mood =
+        moods[Math.floor(Math.random() * moods.length)];
+
+    document.getElementById("mood")
+        .textContent = mood;
+
+}
+
+
+const destinies = [
+    "RUN.",
+    "REFRESH.",
+    "CLICK AGAIN.",
+    "NOTHING.",
+    "BECOME A POTATO.",
+    "THE VOID.",
+    "ERROR 999.",
+    "KEEP GOING."
+];
+
+function generateDestiny() {
+
+    const destiny =
+        destinies[Math.floor(Math.random() * destinies.length)];
+
+    document.getElementById("destiny")
+        .textContent = destiny;
+
+}
+
+
+/* =====================================
+   DESTROY REALITY
+
+function destroyReality() {
+
+    let count = 0;
+
+    const interval = setInterval(() => {
+
+        document.body.style.transform =
+            `rotate(${Math.random() * 8 - 4}deg)
+             scale(${1 + Math.random() * .04})`;
+
+        document.body.style.filter =
+            `hue-rotate(${Math.random() * 360}deg)
+             contrast(${1 + Math.random()})`;
+
+        count++;
+
+        if (count > 15) {
+
+            clearInterval(interval);
+
+            document.body.style.transform = "none";
+            document.body.style.filter = "none";
+
+            document.getElementById("finalText")
+                .innerHTML =
+                "OK.<br>YOU<br>BROKE<br>IT.";
+
+        }
+
+    }, 80);
+
+}
+
+
+/* =====================================
+   RANDOM OBJECT MOTION
+
+const objects =
+    document.querySelectorAll(".object");
+
+setInterval(() => {
+
+    objects.forEach(object => {
+
+        if (Math.random() > .65) {
+
+            const x =
+                Math.random() * 80 - 40;
+
+            const y =
+                Math.random() * 80 - 40;
+
+            const r =
+                Math.random() * 20 - 10;
+
+            object.style.transform =
+                `translate(${x}px, ${y}px)
+                 rotate(${r}deg)`;
+
+        }
+
+    });
+
+}, 1800);
+
+let secret = false;
+
+document.addEventListener("dblclick", () => {
+
+    if (secret) return;
+
+    secret = true;
+
+    document.body.style.background = "white";
+    document.body.style.color = "black";
+
+    setTimeout(() => {
+
+        document.body.style.background = "#050505";
+        document.body.style.color = "white";
+
+        secret = false;
+
+    }, 700);
+
+});
+
 </script>
 </body>
 </html>
