@@ -27,7 +27,6 @@ body {
 
 /* =========================
    BACKGROUND
-========================= */
 
 canvas {
     position: fixed;
@@ -56,7 +55,6 @@ canvas {
 
 /* =========================
    MAIN
-========================= */
 
 main {
     position: relative;
@@ -65,7 +63,6 @@ main {
 
 /* =========================
    HERO
-========================= */
 
 .hero {
     height: 100vh;
@@ -144,7 +141,6 @@ main {
 
 /* =========================
    BUTTON
-========================= */
 
 .start {
     position: absolute;
@@ -175,7 +171,6 @@ main {
 
 /* =========================
    CHAOS SECTION
-========================= */
 
 .chaos {
     min-height: 100vh;
@@ -198,7 +193,6 @@ main {
 
 /* =========================
    FLOATING OBJECTS
-========================= */
 
 .objects {
     position: relative;
@@ -266,7 +260,6 @@ main {
 
 /* =========================
    BIG INTERACTION
-========================= */
 
 .interaction {
     min-height: 100vh;
@@ -311,7 +304,6 @@ main {
 
 /* =========================
    ORBIT
-========================= */
 
 .orbit {
     position: absolute;
@@ -350,7 +342,6 @@ main {
 
 /* =========================
    RANDOM MACHINE
-========================= */
 
 .machine {
     min-height: 100vh;
@@ -405,7 +396,6 @@ main {
 
 /* =========================
    FINAL
-========================= */
 
 .final {
     height: 100vh;
@@ -439,7 +429,6 @@ main {
 
 /* =========================
    MOBILE
-========================= */
 
 @media(max-width: 700px) {
 
@@ -677,10 +666,6 @@ main {
 
 <script>
 
-/* =====================================
-   PARTICLE UNIVERSE
-===================================== */
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -745,7 +730,6 @@ animateParticles();
 
 /* =====================================
    CURSOR GRAVITY
-===================================== */
 
 const interaction =
     document.getElementById("interactionBox");
@@ -766,10 +750,6 @@ interaction.addEventListener("mousemove", e => {
 });
 
 
-/* =====================================
-   CHAOS START
-===================================== */
-
 function startChaos() {
 
     document.body.style.filter =
@@ -788,10 +768,6 @@ function startChaos() {
 
 }
 
-
-/* =====================================
-   RANDOM MOOD
-===================================== */
 
 const moods = [
     "UNHINGED",
@@ -814,10 +790,6 @@ function generateMood() {
 
 }
 
-
-/* =====================================
-   RANDOM DESTINY
-===================================== */
 
 const destinies = [
     "RUN.",
@@ -843,7 +815,6 @@ function generateDestiny() {
 
 /* =====================================
    DESTROY REALITY
-===================================== */
 
 function destroyReality() {
 
@@ -881,7 +852,6 @@ function destroyReality() {
 
 /* =====================================
    RANDOM OBJECT MOTION
-===================================== */
 
 const objects =
     document.querySelectorAll(".object");
@@ -911,11 +881,6 @@ setInterval(() => {
 
 }, 1800);
 
-
-/* =====================================
-   SECRET DOUBLE CLICK
-===================================== */
-
 let secret = false;
 
 document.addEventListener("dblclick", () => {
@@ -939,6 +904,5 @@ document.addEventListener("dblclick", () => {
 });
 
 </script>
-
 </body>
 </html>
